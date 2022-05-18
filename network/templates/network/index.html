@@ -1,0 +1,31 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <!-- begin profile-content -->
+    <div class="profile-content">
+        <!-- begin tab-content -->
+        <div class="tab-content p-0">
+            <!-- begin #profile-post tab -->
+            <div class="tab-pane fade active show" id="profile-post">
+                {% if user.is_authenticated %}
+                    <div id="post-form" data-url="{% url "posts" %}"></div>
+                    <div id="comment-form" data-url="{% url "comments" %}"></div>
+                    <div id="like-form" data-url="{% url "likes" %}"></div>
+                {% endif %}
+                <!-- begin timeline -->
+                {% if user.is_authenticated %}
+                    <div id="timeline" >
+                        <!-- REACT JS CODE-->
+                    </div>
+                {% endif %}
+                <!-- end timeline -->
+            </div>
+            <!-- end #profile-post tab -->
+        </div>
+        <!-- end tab-content -->
+    </div>
+    <!-- end profile-content -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{% static 'network/app.jsx' %}" type="text/babel"></script>
+{% endblock %}
